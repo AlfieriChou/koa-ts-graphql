@@ -1,5 +1,4 @@
 import { config } from '../config'
-import * as appRoot from 'app-root-path'
 import { createConnection, ConnectionOptions } from 'typeorm'
 
 const mysql: Object = config['mysql']
@@ -15,18 +14,18 @@ export const databaseInitializer: any = async () => {
     synchronize: true,
     logging: true,
     entities: [
-      `${appRoot}/src/entity/*.ts`
+      `${process.env.PWD}/src/entity/*.ts`
     ],
     migrations: [
-      `${appRoot}/src/migration/*.ts`
+      `${process.env.PWD}/src/migration/*.ts`
     ],
     subscribers: [
-      `${appRoot}/src/subscriber/*.ts`
+      `${process.env.PWD}/src/subscriber/*.ts`
     ],
     cli: {
-      entitiesDir: `${appRoot}/src/entity`,
-      migrationsDir: `${appRoot}/src/migration`,
-      subscribersDir: `${appRoot}/src/subscriber`
+      entitiesDir: `${process.env.PWD}/src/entity`,
+      migrationsDir: `${process.env.PWD}/src/migration`,
+      subscribersDir: `${process.env.PWD}/src/subscriber`
     }
   }
   return await createConnection(connection).then((connection) => {
