@@ -25,6 +25,7 @@
   "dependencies": {
     "@types/node": "^10.12.10",
     "apollo-server-koa": "^2.2.3",
+    "dir_filenames": "^1.0.6",
     "graphql": "^14.0.2",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
