@@ -3,6 +3,7 @@ import * as Koa from 'koa'
 import * as bodyParser from 'koa-bodyparser'
 import { ApolloServer, gql } from 'apollo-server-koa'
 import { databaseInitializer } from './initializer/database'
+import { config } from './config'
 
 const app: any = new Koa()
 
@@ -27,12 +28,9 @@ const bootstrap: any = async () => {
     resolvers
   })
   server.applyMiddleware({ app })
-
-  const port: number = 4000
   const host: string = 'localhost'
-
-  app.listen(port, host, () =>
-    console.log(`🚀 Server ready at http://${host}:${port}${server.graphqlPath}`)
+  app.listen(config['port'], host, () =>
+    console.log(`🚀 Server ready at http://${host}:${config['port']}${server.graphqlPath}`)
   )
 }
 
