@@ -23,11 +23,12 @@
   },
   "homepage": "https://github.com/AlfieriChou/koa-ts-graphql#readme",
   "dependencies": {
-    "apollo-server-koa": "^2.2.3",
     "dir_filenames": "^1.0.6",
     "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
+    "koa-graphql": "^0.8.0",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.11",
     "mysql": "^2.16.0",
