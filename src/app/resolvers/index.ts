@@ -7,16 +7,19 @@ let Query: Object = {}
 let Mutation: Object = {}
 if (queries.length > 0) {
   queries.map(query => {
-    _.merge(Query, query)
+    _.merge(Query, require(query))
   })
 }
 if (mutations.length > 0) {
   mutations.map(mutation => {
-    _.merge(Mutation, mutation)
+    _.merge(Mutation, require(mutation))
   })
 }
 
-export const resolvers: Object = {
-  Query: Query,
-  Mutation: Mutation
+export let resolvers: Object = {}
+if (Object.keys(Query).length > 0) {
+  resolvers = { Query: Query }
+}
+if (Object.keys(Mutation).length > 0) {
+  resolvers = { Mutation: Mutation }
 }
