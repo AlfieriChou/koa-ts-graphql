@@ -10,7 +10,7 @@ import { schema } from './app'
 const app: any = new Koa()
 const router: any = new Router()
 
-const bootstrap: any = async () => {
+const bootstrap: Function = async () => {
   await databaseInitializer()
   app.use(bodyParser())
   router.get('/graphql', graphqlKoa({ schema }))
