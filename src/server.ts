@@ -17,8 +17,8 @@ const bootstrap: Function = async () => {
   app.use(router.routes())
   app.use(router.allowedMethods())
   const host: string = 'localhost'
-  app.listen(config['port'], host, () =>
-    console.log(`🚀 Server ready at http://${host}:${config['port']}/graphql`)
+  app.listen(config.port, host, () =>
+    console.log(`🚀 Server ready at http://${host}:${config.port}/graphql`)
   )
 }
 
