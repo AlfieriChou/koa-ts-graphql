@@ -1,4 +1,6 @@
-export const config: Object = {
+import { Config } from '../typing/config'
+
+export const config: Config = {
   port: 4000,
   mysql: {
     host: '106.15.230.136',

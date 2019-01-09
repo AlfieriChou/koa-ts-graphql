@@ -1,16 +1,18 @@
 import { config } from '../config'
-import { createConnection, ConnectionOptions } from 'typeorm'
+import { createConnection } from 'typeorm'
+import { Mysql } from '../typing/config'
+import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
-const mysql: Object = config['mysql']
+const mysql: Mysql = config.mysql
 
 export const databaseInitializer: any = async () => {
-  const connection: ConnectionOptions = {
+  const connection: MysqlConnectionOptions = {
     type: 'mysql',
-    host: mysql['host'] || 'localhost',
-    port: parseInt(mysql['port'] || '3306', 10),
-    username:mysql['username'] || 'user',
-    password: mysql['password'] || null,
-    database: mysql['database'] || 'test',
+    host: mysql.host || 'localhost',
+    port: mysql.port || 3306,
+    username:mysql.username || 'user',
+    password: mysql.password || null,
+    database: mysql.database || 'test',
     synchronize: true,
     logging: true,
     entities: [
@@ -28,7 +30,11 @@ export const databaseInitializer: any = async () => {
       subscribersDir: `${process.env.PWD}/src/subscriber`
     }
   }
-  return await createConnection(connection).then((connection) => {
-    console.log('Database connection established')
-  })
+  return await createConnection(connection)
+    .then(() => {
+      console.log('Database connection established')
+    })
+    .catch(err => {
+      throw err
+    })
 }
